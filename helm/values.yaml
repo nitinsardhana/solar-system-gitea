@@ -1,0 +1,17 @@
+replicaCount: 2
+
+image:
+  repository: viraj1989/solar-system
+  tag: "latest"
+  pullPolicy: Always
+
+service:
+  type: NodePort
+  port: 3000
+  targetPort: 3000
+  nodePort: 30000
+
+env:
+  MONGO_URI: "mongodb://mongodb:27017/solar-system"
+
+namespace: default
