@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: solar-system
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: solar-system
+  template:
+    metadata:
+      labels:
+        app: solar-system
+    spec:
+      containers:
+      - name: solar-system
+        image: viraj1989/solar-system:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: MONGO_URI
+          value: "mongodb://mongodb:27017/solar-system"
